@@ -17,8 +17,8 @@ module.exports.createMovie = (req, res, next) => {
     trailerLink,
     thumbnail,
     movieId,
-    nameRu,
-    nameEn,
+    nameRU,
+    nameEN,
   } = req.body;
   Movie.create({
     country,
@@ -31,8 +31,8 @@ module.exports.createMovie = (req, res, next) => {
     thumbnail,
     owner: req.user._id,
     movieId,
-    nameRu,
-    nameEn,
+    nameRU,
+    nameEN,
   })
     .then((movie) => res.send({ data: movie }))
     .catch(next);

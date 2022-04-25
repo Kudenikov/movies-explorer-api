@@ -45,8 +45,8 @@ router.post('/', celebrate({
       'any.required': 'Ссылка не указана',
     }),
     movieId: Joi.required(),
-    nameRu: Joi.string().required(),
-    nameEn: Joi.string().required(),
+    nameRU: Joi.string().required(),
+    nameEN: Joi.string().required(),
   }),
 }), createMovie);
 
