@@ -17,8 +17,11 @@ module.exports.updateUser = (req, res, next) => {
   const { email, name } = req.body;
   User.findOne({ email: req.body.email })
     .then((user) => {
+      // console.log(JSON.stringify(user._id).replace(/"/g, ''));
       if (user) {
-        throw new ErrorConflict(`Пользователь ${req.body.email} уже зарегистрирован`);
+        if (JSON.stringify(user._id).replace(/"/g, '') !== req.user._id) {
+          throw new ErrorConflict(`Пользователь ${req.body.email} уже зарегистрирован`);
+        }
       }
     })
     .then(() => User.findByIdAndUpdate(
